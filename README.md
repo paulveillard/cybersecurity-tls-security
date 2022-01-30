@@ -1,1 +1,1 @@
-# HTTP Encrypted (HTTPS)
+# HTTPS Encryption
