@@ -18,7 +18,7 @@ A website must have an SSL/TLS certificate for their web server/domain name to u
 
 ![handshake](https://github.com/paulveillard/cybersecurity-tls-security/blob/main/img/ssl_handcheck2.png)
 
-- The client contacts the server using a secure URL (HTTPS…).
+- 1 - The client contacts the server using a secure URL (HTTPS…).
 - The server sends the client its certificate and public key.
 - The client verifies this with a Trusted Root Certification Authority to ensure the certificate is legitimate.
 - The client and server negotiate the strongest type of encryption that each can support.
