@@ -16,6 +16,8 @@ SSL/TLS uses both asymmetric and symmetric encryption to protect the confidentia
 
 A website must have an SSL/TLS certificate for their web server/domain name to use SSL/TLS encryption. Once installed, the certificate enables the client and server to securely negotiate the level of encryption in the following steps:
 
+![handshake](https://github.com/paulveillard/cybersecurity-tls-security/blob/main/img/ssl_handcheck2.png)
+
 - The client contacts the server using a secure URL (HTTPS…).
 - The server sends the client its certificate and public key.
 - The client verifies this with a Trusted Root Certification Authority to ensure the certificate is legitimate.
