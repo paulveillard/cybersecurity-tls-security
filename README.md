@@ -371,39 +371,39 @@ The New Illustrated TLS Connection
 
 ### UTA (Use TLS in Applications) IETF WG
 
-[Drafts and RFCs (HTTP and SMTP)](https://datatracker.ietf.org/wg/uta/documents/)
+- [Drafts and RFCs (HTTP and SMTP)](https://datatracker.ietf.org/wg/uta/documents/)
 
 ### Strict Transport Security (STS)
 
-[HTTP Strict Transport Security (HSTS). RFC 6797 (2012)](https://doi.org/10.17487/rfc6797)
+- [HTTP Strict Transport Security (HSTS). RFC 6797 (2012)](https://doi.org/10.17487/rfc6797)
 
-[STS Preload List - Google Chrome](https://cs.chromium.org/chromium/src/net/http/transport_security_state_static.json)
+- [STS Preload List - Google Chrome](https://cs.chromium.org/chromium/src/net/http/transport_security_state_static.json)
 
-[HSTS Preload List Submission.](https://hstspreload.org/)
+- [HSTS Preload List Submission.](https://hstspreload.org/)
 
-[HTTP Strict Transport Security for Apache, NGINX and Lighttpd](https://raymii.org/s/tutorials/HTTP_Strict_Transport_Security_for_Apache_NGINX_and_Lighttpd.html) 
+- [HTTP Strict Transport Security for Apache, NGINX and Lighttpd](https://raymii.org/s/tutorials/HTTP_Strict_Transport_Security_for_Apache_NGINX_and_Lighttpd.html) 
 
 
 
 ### HPKP
 
-[Public Key Pinning Extension for HTTP. RFC 7469 (2015)](https://doi.org/10.17487/rfc7469)
+- [Public Key Pinning Extension for HTTP. RFC 7469 (2015)](https://doi.org/10.17487/rfc7469)
 
-[Is HTTP Public Key Pinning Dead? (2016)](https://blog.qualys.com/ssllabs/2016/09/06/is-http-public-key-pinning-dead)
+- [Is HTTP Public Key Pinning Dead? (2016)](https://blog.qualys.com/ssllabs/2016/09/06/is-http-public-key-pinning-dead)
 
 ### Certificate Transparency
 
-[Certificate Transparency](https://www.certificate-transparency.org/) 
+- [Certificate Transparency](https://www.certificate-transparency.org/) 
 
-[How Certificate Transparency Works - Certificate Transparency](https://www.certificate-transparency.org/how-ct-works)
+- [How Certificate Transparency Works - Certificate Transparency](https://www.certificate-transparency.org/how-ct-works)
 
-[Google Certificate Transparency (CT) to Expand to All Certificates Types (2016)](https://casecurity.org/2016/11/08/google-certificate-transparency-ct-to-expand-to-all-certificates-types/)
+- [Google Certificate Transparency (CT) to Expand to All Certificates Types (2016)](https://casecurity.org/2016/11/08/google-certificate-transparency-ct-to-expand-to-all-certificates-types/)
 
 ### CAA
 
-[DNS Certification Authority Authorization (CAA) Resource Record. RFC 6844](https://doi.org/10.17487/rfc6844)
+- [DNS Certification Authority Authorization (CAA) Resource Record. RFC 6844](https://doi.org/10.17487/rfc6844)
 
-[CAA Record Generator](https://sslmate.com/labs/caa/)
+- [CAA Record Generator](https://sslmate.com/labs/caa/)
 
 ### DANE and DNSSEC
 
