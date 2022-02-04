@@ -413,3 +413,6 @@ The New Illustrated TLS Connection
 - [Generate TLSA Record](https://www.huque.com/bin/gen_tlsa)
 
 - [DNS security introduction and requirements. RFC 4033](https://tools.ietf.org/html/rfc4033)
+
+### SSL / TLS Best Practices
+ - [TLS 2021](#https://www.ssl.com/guide/ssl-best-practices/#ftoc-heading-4)
