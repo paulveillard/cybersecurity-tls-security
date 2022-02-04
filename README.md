@@ -18,13 +18,13 @@ A website must have an SSL/TLS certificate for their web server/domain name to u
 
 ![handshake](https://github.com/paulveillard/cybersecurity-tls-security/blob/main/img/ssl_handcheck2.png)
 
-- 1 - The client contacts the server using a secure URL (HTTPS…).
-- The server sends the client its certificate and public key.
-- The client verifies this with a Trusted Root Certification Authority to ensure the certificate is legitimate.
-- The client and server negotiate the strongest type of encryption that each can support.
-- The client encrypts a session (secret) key with the server’s public key, and sends it back to the server.
-- The server decrypts the client communication with its private key, and the session is established.
-- The session key (symmetric encryption) is now used to encrypt and decrypt data transmitted between the client and server.
+- 1) The client contacts the server using a secure URL (HTTPS…).
+- 2) The server sends the client its certificate and public key.
+- 3) The client verifies this with a Trusted Root Certification Authority to ensure the certificate is legitimate.
+- 4) The client and server negotiate the strongest type of encryption that each can support.
+- 5) The client encrypts a session (secret) key with the server’s public key, and sends it back to the server.
+- 6) The server decrypts the client communication with its private key, and the session is established.
+- 7) The session key (symmetric encryption) is now used to encrypt and decrypt data transmitted between the client and server.
 Both the client and server are now using HTTPS (SSL/TLS + HTTP) for their communication. Web browsers validate this with a lock icon in the browser address bar. HTTPS functions over Port 443.
 
 Once you leave the website, those keys are discarded. On your next visit, a new handshake is negotiated, and a new set of keys are generated.
