@@ -404,12 +404,12 @@ The New Illustrated TLS Connection
 
 ### DANE and DNSSEC
 
-[DANE Resources](https://www.huque.com/dane/)
+- [DANE Resources](https://www.huque.com/dane/)
 
-[The DNS-Based Authentication of Named Entities (DANE) Transport Layer Security (TLS) Protocol: TLSA. RFC 6698](https://doi.org/10.17487/rfc6698)
+- [The DNS-Based Authentication of Named Entities (DANE) Transport Layer Security (TLS) Protocol: TLSA. RFC 6698](https://doi.org/10.17487/rfc6698)
 
-[DANE: Taking TLS Authentication to the Next Level Using DNSSEC (2011)](https://www.internetsociety.org/articles/dane-taking-tls-authentication-next-level-using-dnssec)
+- [DANE: Taking TLS Authentication to the Next Level Using DNSSEC (2011)](https://www.internetsociety.org/articles/dane-taking-tls-authentication-next-level-using-dnssec)
 
-[Generate TLSA Record](https://www.huque.com/bin/gen_tlsa)
+- [Generate TLSA Record](https://www.huque.com/bin/gen_tlsa)
 
-[DNS security introduction and requirements. RFC 4033](https://tools.ietf.org/html/rfc4033)
+- [DNS security introduction and requirements. RFC 4033](https://tools.ietf.org/html/rfc4033)
