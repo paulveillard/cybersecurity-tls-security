@@ -3,14 +3,16 @@
 
 
 ## Table of Contents
- - [TLS Introduction](#tls-introduction)
+
+ -
+ - [TLS General](#tls-general)
  - [TLS Attacks](#tls-attacks)
  - [PKIX](#pkix)
  - [SSL Interception](#ssl-interception)
 
 
 
-## TLS Introduction
+## TLS General
 
 - [You should read this an skip the rest of the list](https://www.feistyduck.com/books/bulletproof-ssl-and-tls/reviewerKit.html)
 
