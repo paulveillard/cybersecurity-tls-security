@@ -8,19 +8,19 @@
 
 ## TLS Introduction
 
-[You should read this an skip the rest of the list](https://www.feistyduck.com/books/bulletproof-ssl-and-tls/reviewerKit.html)
+- [You should read this an skip the rest of the list](https://www.feistyduck.com/books/bulletproof-ssl-and-tls/reviewerKit.html)
 
-## Trends
+### Trends
 
-[Looking Back, Moving Forward (2017)](https://casecurity.org/2017/01/13/2017-looking-back-moving-forward/)
+- [Looking Back, Moving Forward (2017)](https://casecurity.org/2017/01/13/2017-looking-back-moving-forward/)
 
-## Pervasive Monitoring
-[Pervasive Monitoring is an Attack. RFC 7258](https://tools.ietf.org/html/rfc7258)
+### Pervasive Monitoring
+- [Pervasive Monitoring is an Attack. RFC 7258](https://tools.ietf.org/html/rfc7258)
 
-[Confidentiality in the Face of Pervasive Surveillance: A Threat Model and Problem Statement. RFC 7624 (2015)](https://tools.ietf.org/html/rfc7624)
+- [Confidentiality in the Face of Pervasive Surveillance: A Threat Model and Problem Statement. RFC 7624 (2015)](https://tools.ietf.org/html/rfc7624)
 
 
-## Certificates / PKIX
+### Certificates / PKIX
 
 [Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile. RFC 5280](https://doi.org/10.17487/rfc5280)
 
@@ -28,7 +28,7 @@
 
 [tls - How does OCSP stapling work? - Information Security Stack Exchange. (2013)](https://security.stackexchange.com/questions/29686/how-does-ocsp-stapling-work)
 
-## Attacks on TLS
+## TLS Attacks
 
 ### Overview
 
