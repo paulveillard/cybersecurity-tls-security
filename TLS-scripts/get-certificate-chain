@@ -1,0 +1,222 @@
+#!/bin/bash
+
+# Reads certificate chain from a host or a file and decode it using openssl.
+
+# 2015-02-04 - Created by Onno Zweers.
+# 2015-02-20 - Read chain from a file - Onno
+# 2015-02-22 - Show chain structure - Onno
+# 2015-02-22 - Check SHA1. Check if chain top cert issued by root CA cert - Onno
+# 2015-02-23 - Show subjectAltNames. - Onno
+# 2015-03-03 - Use grid root certs if available. - Onno
+
+# TODO:
+# Error handling, connection timeout, refused, host not in DNS etc.
+# Check not before and not after (and warn in time). Does openssl do this?
+# Check CRLs. Check OCSP. Doesn't openssl do this?
+# Check if cafile is the original from the package (rpm --verify on RHEL)
+
+
+usage() {
+  echo "Decodes entire certificate chain from a server or a file."
+  echo "Usage:"
+  echo "  " `basename $0` " host [port]"
+  echo "  " `basename $0` " chain_file"
+  exit 1
+}
+
+
+stderrfile=$(mktemp)
+
+# Choose CA root certificate bundle. First we try grid certificates.
+capaths="/etc/grid-security/certificates/"
+for path in $capaths ; do
+  if [ -d "$path" ] ; then
+    capath="$path"
+    capath_args="-CApath $path"
+    continue
+  fi
+done
+# Can we find a cafile containing root cert bundle?
+cafiles="/etc/ssl/certs/ca-bundle.crt /etc/pki/tls/certs/ca-bundle.crt"
+for file in $cafiles ; do
+  # Does this cabundle exit on this system?
+  if [ -f "$file" ] ; then
+    cafile="$file"
+    cafile_args="-CAfile $file"
+    continue
+  fi
+done
+if [ -z "$cafile" -a -z "$capath" ] ; then
+  echo "No root CA certificates found. Searched these locations: $capath $cafile"
+  exit 1
+fi
+
+location="$1"
+if [ -z "$location" ] ; then
+  usage;
+fi
+
+decode_certs() {
+  while read line ; do \
+    if [[ $line =~ '-----BEGIN CERTIFICATE-----' ]] ; then
+      ((i++))
+      rawcert="$line"
+    else
+      rawcert="$rawcert"$'\n'"$line"
+      if [[ $line =~ '-----END CERTIFICATE-----' ]] ; then
+        cert[$i]=$(openssl x509 -noout -text <<< "$rawcert")
+        echo "${cert[i]}"
+        issuer[$i]=$(grep 'Issuer: ' <<< "${cert[i]}" | sed -e 's/.*Issuer: //')
+        subject[$i]=$(grep 'Subject: ' <<< "${cert[i]}" | sed -e 's/.*Subject: //')
+      fi
+    fi
+  done
+}
+
+# Location can be filename or hostname.
+if [ -f "$location" ] ; then
+  chain=$(awk '/-----BEGIN CERTIFICATE-----/,/-----END CERTIFICATE-----/' < "$location")
+else
+  port=443 ; [ -n "$2" ] && port="$2"
+  chain=$(echo Q \
+            | openssl s_client \
+                -connect "$location":"$port" \
+                -servername "$location" \
+                $capath_args \
+                $cafile_args \
+                -showcerts \
+                -verify 15 \
+                2> "$stderrfile" \
+            | awk '/-----BEGIN CERTIFICATE-----/,/-----END CERTIFICATE-----/' )
+  if [ "$DEBUG" = "y" ] ; then
+    echo "openssl s_client -connect \"$location\":\"$port\" -servername \"$location\" $capath_args $cafile_args -showcerts -verify 15"
+  fi
+  # If SNI is not supported by the server, try again without SNI.
+  if grep --silent "getaddrinfo: Servname not supported for ai_socktype" "$stderrfile" ; then
+    echo "SNI not supported; trying again without SNI."
+    chain=$(echo Q \
+              | openssl s_client \
+                  -connect "$location":"$port" \
+                  $capath_args \
+                  $cafile_args \
+                  -showcerts \
+                  -verify 15 \
+              | awk '/-----BEGIN CERTIFICATE-----/,/-----END CERTIFICATE-----/' )
+  fi
+fi
+decode_certs <<< "$chain"
+
+
+echo
+echo "=== Chain structure ==="
+
+# This may look a lot of code, but it has to deal with these possible situations:
+# 1. self-signed certificates
+# 2. chain loops
+# 3. multiple seperate chains mixed in one file
+# 4. forked chains (same issuer issued multiple certs)
+
+get_issuer() {
+  # Finds the cert in our list that is the issuer of the given cert.
+  certnr=$1
+  issuer_found=false
+  for s in $(seq 1 ${#cert[@]}) ; do
+    if [ "${issuer[certnr]}" = "${subject[s]}" ] ; then
+      # Return issuer only when cert is not self-signed because we don't want endless loop
+      if [ $i -ne $s ] ; then
+        echo $s
+      fi
+      return
+    fi
+  done
+  # Issuer is not in our list of certs.
+  return
+}
+
+get_issued() {
+  # Finds all certs in our list that have been issued by the given cert.
+  certnr=$1
+  issued_numbers=
+  for s in $(seq 1 ${#cert[@]}) ; do
+    if [ "${issuer[s]}" = "${subject[certnr]}" ] ; then
+      # Return issued only when cert is not self-signed because we don't want endless loop
+      if [ $i -ne $s ] ; then
+        echo $s
+      fi
+    fi
+  done
+  return
+}
+
+show_issued_certs() {
+  cert_nr=$1
+  depth=$2
+  indent=""
+  for issued_nr in $(get_issued $cert_nr) ; do
+    for n in $(seq 1 $depth) ; do
+      indent="${indent}  "
+    done
+    # Assuming the terminal supports UTF8.
+    echo "${indent}└─${subject[issued_nr]}"
+    if grep --silent "Signature Algorithm: sha1With" <<< "${cert[issued_nr]}" ; then
+      echo "${indent}  │   Warning: sha1 signed certificate."
+    fi
+    subjectAltNames=$(egrep -o 'DNS:[^,]+' <<< "${cert[issued_nr]}" | sed -e 's/DNS://')
+    if [ -n "$subjectAltNames" ] ; then
+      for name in $subjectAltNames ; do
+        echo "${indent}  │   subjectAltName: $name."
+      done
+    fi 
+    if [ $depth -gt ${#cert[@]} ] ; then
+      echo "Depth $depth > number of certs ${#cert[@]}. Is there a loop in the chain?"
+      return
+    fi
+    show_issued_certs $issued_nr $((depth + 1))
+  done
+}
+
+# Iterate over all certs to find the top (that has no issuer inside this chain)
+# If chain is messy, there can be several top certs; show them all.
+for i in $(seq 1 ${#cert[@]}) ; do
+  issuer_nr=$(get_issuer $i)
+  if [ -z "$issuer_nr" ] ; then
+    # This cert does not seem to have an issuer inside the chain. Probably top of chain.
+    depth=0
+    # Show the issuer of top cert, if not self-signed.
+    if [ "${issuer[i]}" != "${subject[i]}" ] ; then
+      echo "${issuer[i]}"
+      if grep --silent "Subject: ${issuer[i]}$" "$cafile" ; then
+        echo "│   Found in root cert list $cafile."
+      else
+        echo "│   Not in root cert list $cafile. Is the chain complete?"
+      fi
+      depth=$((depth + 1))
+      echo "└─${subject[i]}"
+        # Check SHA1
+      if grep --silent "Signature Algorithm: sha1With" <<< "${cert[i]}" ; then
+        echo "  │    Warning: sha1 signed certificate."
+      fi
+    else
+      # Top cert is self signed. That's acceptable if it's an official root CA cert.
+      echo "${subject[i]}"
+      echo "│   Self-signed."
+      if grep --silent "Subject: ${subject[i]}$" "$cafile" ; then
+        echo "│   Found in root cert list $cafile. Probably no need to put this in the chain."
+        # Check SHA1
+        if grep --silent "Signature Algorithm: sha1With" <<< "${cert[i]}" ; then
+          echo "│   Cert is sha1 signed, but that's OK because it's in the root cert list."
+        fi
+      else
+        echo "│   Not in root cert list $cafile. Are you sure this chain provides trust?"
+        # Check SHA1
+        if grep --silent "Signature Algorithm: sha1With" <<< "${cert[i]}" ; then
+          echo "  │    Warning: sha1 signed certificate."
+        fi
+      fi
+    fi
+    show_issued_certs $i $depth
+  fi
+done
+
+
+rm "$stderrfile"
