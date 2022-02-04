@@ -1,4 +1,4 @@
-# HTTPS Encryption
+# TLS Security
 
 
 ## Table of Contents
