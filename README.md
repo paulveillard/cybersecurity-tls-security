@@ -2,8 +2,31 @@
 > A collection of awesome framework, libraries, learning tutorials, videos, webcasts, technical resources and cool stuff about TLS.
 
 
+## What is SSL/TLS Encryption?
+TLDR: SSL/TLS encrypts communications between a client and server, primarily web browsers and web sites/applications. 
+
+SSL (Secure Sockets Layer) encryption, and its more modern and secure replacement, TLS (Transport Layer Security) encryption, protect data sent over the internet or a computer network.
+
+## How Does SSL/TLS Encryption Work?
+SSL/TLS uses both asymmetric and symmetric encryption to protect the confidentiality and integrity of data-in-transit. Asymmetric encryption is used to establish a secure session between a client and a server, and symmetric encryption is used to exchange data within the secured session. 
+
+A website must have an SSL/TLS certificate for their web server/domain name to use SSL/TLS encryption. Once installed, the certificate enables the client and server to securely negotiate the level of encryption in the following steps:
+
+- The client contacts the server using a secure URL (HTTPS…).
+- The server sends the client its certificate and public key.
+- The client verifies this with a Trusted Root Certification Authority to ensure the certificate is legitimate.
+- The client and server negotiate the strongest type of encryption that each can support.
+- The client encrypts a session (secret) key with the server’s public key, and sends it back to the server.
+- The server decrypts the client communication with its private key, and the session is established.
+- The session key (symmetric encryption) is now used to encrypt and decrypt data transmitted between the client and server.
+Both the client and server are now using HTTPS (SSL/TLS + HTTP) for their communication. Web browsers validate this with a lock icon in the browser address bar. HTTPS functions over Port 443.
+
+Once you leave the website, those keys are discarded. On your next visit, a new handshake is negotiated, and a new set of keys are generated.
+
+
 ## Table of Contents
 
+  - [Introduction](#what)
   - [SSL/TLS Protocol History](#ssltls-protocol-history)
   - [SSL/TLS Hacks](#ssltls-hacks)
     - [Cryptographic Issues](#cryptographic-issues)
