@@ -7,6 +7,8 @@ TLDR: SSL/TLS encrypts communications between a client and server, primarily web
 
 SSL (Secure Sockets Layer) encryption, and its more modern and secure replacement, TLS (Transport Layer Security) encryption, protect data sent over the internet or a computer network.
 
+![tls-history](https://github.com/paulveillard/cybersecurity-tls-security/blob/main/img/history.png)
+
 
 ## How Does SSL/TLS Encryption Work?
 SSL/TLS uses both asymmetric and symmetric encryption to protect the confidentiality and integrity of data-in-transit. Asymmetric encryption is used to establish a secure session between a client and a server, and symmetric encryption is used to exchange data within the secured session. 
