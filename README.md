@@ -416,8 +416,8 @@ The New Illustrated TLS Connection
 - [DNS security introduction and requirements. RFC 4033](https://tools.ietf.org/html/rfc4033)
 
 ### SSL / TLS Best Practices
- - [TLS 2021](#https://www.ssl.com/guide/ssl-best-practices/#ftoc-heading-4)
- - [SSL and TLS Deployment Best Practices](#https://github.com/ssllabs/research/wiki/SSL-and-TLS-Deployment-Best-Practices)
+ - [TLS 2021](https://www.ssl.com/guide/ssl-best-practices/#ftoc-heading-4)
+ - [SSL and TLS Deployment Best Practices](https://github.com/ssllabs/research/wiki/SSL-and-TLS-Deployment-Best-Practices)
 
 
 
