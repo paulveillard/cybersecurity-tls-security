@@ -417,6 +417,10 @@ The New Illustrated TLS Connection
 
 ### SSL / TLS Best Practices
  - [TLS 2021](#https://www.ssl.com/guide/ssl-best-practices/#ftoc-heading-4)
+ - [SSL and TLS Deployment Best Practices](#https://github.com/ssllabs/research/wiki/SSL-and-TLS-Deployment-Best-Practices)
+
+
+
 
 **[`^        back to top        ^`](#)**
 
