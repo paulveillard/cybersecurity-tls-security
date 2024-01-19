@@ -11,6 +11,8 @@ SSL (Secure Sockets Layer) encryption, and its more modern and secure replacemen
 
 ![tls-history](https://github.com/paulveillard/cybersecurity-tls-security/blob/main/img/history.png)
 
+- TLS evolved from Secure Socket Layers (SSL) which was originally developed by Netscape Communications Corporation in 1994 to secure web sessions. SSL 1.0 was never publicly released, whilst SSL 2.0 was quickly replaced by SSL 3.0 on which TLS is based.
+
 
 ## How Does SSL/TLS Encryption Work?
 SSL/TLS uses both asymmetric and symmetric encryption to protect the confidentiality and integrity of data-in-transit. Asymmetric encryption is used to establish a secure session between a client and a server, and symmetric encryption is used to exchange data within the secured session. 
