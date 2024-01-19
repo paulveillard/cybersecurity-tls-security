@@ -5,6 +5,7 @@ An ongoing & curated collection of awesome software best practices and technique
 
 ## What is SSL/TLS Encryption?
 TLDR: SSL/TLS encrypts communications between a client and server, primarily web browsers and web sites/applications. Specifically, TLS is a cryptographic protocol that provides end-to-end security of data sent between applications over the Internet.
+> Transport Layer Security (TLS) encrypts data sent over the Internet to ensure that eavesdroppers and hackers are unable to see what you transmit which is particularly useful for private and sensitive information such as passwords, credit card numbers, and personal correspondence.
 ![tls](https://github.com/paulveillard/cybersecurity-tls-security/blob/main/img/tls.png)
 
 SSL (Secure Sockets Layer) encryption, and its more modern and secure replacement, TLS (Transport Layer Security) encryption, protect data sent over the internet or a computer network.
