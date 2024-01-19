@@ -3,7 +3,7 @@ An ongoing & curated collection of awesome software best practices and technique
 > Thanks to all contributors, you're awesome and wouldn't be possible without you! Our goal is to build a categorized community-driven collection of very well-known resources.
 
 
-## What is TLS?
+##  `What is TLS? `
 [TLS](https://www.internetsociety.org/deploy360/tls/basics/) encrypts communications between a client and server, primarily web browsers and web sites/applications. Specifically, TLS is a cryptographic protocol that provides end-to-end security of data sent between applications over the Internet.
 > Transport Layer Security (TLS) encrypts data sent over the Internet to ensure that eavesdroppers and hackers are unable to see what you transmit which is particularly useful for private and sensitive information such as passwords, credit card numbers, and personal correspondence.
 ![tls](https://github.com/paulveillard/cybersecurity-tls-security/blob/main/img/tls.png)
@@ -15,7 +15,7 @@ SSL (Secure Sockets Layer) encryption, and its more modern and secure replacemen
 - TLS evolved from Secure Socket Layers (SSL) which was originally developed by Netscape Communications Corporation in 1994 to secure web sessions. SSL 1.0 was never publicly released, whilst SSL 2.0 was quickly replaced by SSL 3.0 on which TLS is based.
 
 
-## How Does SSL/TLS Encryption Work?
+##  `How Does SSL/TLS Encryption Work? `
 SSL/TLS uses both asymmetric and symmetric encryption to protect the confidentiality and integrity of data-in-transit. Asymmetric encryption is used to establish a secure session between a client and a server, and symmetric encryption is used to exchange data within the secured session. 
 
 A website must have an SSL/TLS certificate for their web server/domain name to use SSL/TLS encryption. Once installed, the certificate enables the client and server to securely negotiate the level of encryption in the following steps:
@@ -34,7 +34,7 @@ Both the client and server are now using HTTPS (SSL/TLS + HTTP) for their commun
 Once you leave the website, those keys are discarded. On your next visit, a new handshake is negotiated, and a new set of keys are generated.
 
 
-## Table of Contents
+##  `Table of Contents `
 
   - [Introduction](#what-is-tls)
   - [SSL/TLS Protocol History](#ssltls-protocol-history)
