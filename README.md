@@ -3,7 +3,7 @@ An ongoing & curated collection of awesome software best practices and technique
 > Thanks to all contributors, you're awesome and wouldn't be possible without you! Our goal is to build a categorized community-driven collection of very well-known resources.
 
 
-## What is SSL/TLS Encryption?
+## What is TLS?
 [TLS](https://www.internetsociety.org/deploy360/tls/basics/) encrypts communications between a client and server, primarily web browsers and web sites/applications. Specifically, TLS is a cryptographic protocol that provides end-to-end security of data sent between applications over the Internet.
 > Transport Layer Security (TLS) encrypts data sent over the Internet to ensure that eavesdroppers and hackers are unable to see what you transmit which is particularly useful for private and sensitive information such as passwords, credit card numbers, and personal correspondence.
 ![tls](https://github.com/paulveillard/cybersecurity-tls-security/blob/main/img/tls.png)
@@ -36,7 +36,7 @@ Once you leave the website, those keys are discarded. On your next visit, a new 
 
 ## Table of Contents
 
-  - [Introduction](#what-is-ssltls-encryption)
+  - [Introduction](#what-is-tls)
   - [SSL/TLS Protocol History](#ssltls-protocol-history)
   - [SSL/TLS Hacks](#ssltls-hacks)
     - [Cryptographic Issues](#cryptographic-issues)
